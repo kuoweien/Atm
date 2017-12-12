@@ -9,20 +9,51 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     boolean logon = false;
+    private final static int REQUEST_LOGIN = 102;
+    private final static int REQUEST_USERINFO = 105;
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case REQUEST_LOGIN:
+                if(resultCode == RESULT_OK){
+                    String userid = data.getStringExtra("EXTRA_USERID");
+                    Toast.makeText(this, "Login userid:"+userid, Toast.LENGTH_LONG).show();
+                    getSharedPreferences("atm", MODE_PRIVATE)
+                            .edit()
+                            .putString("USERID", userid)
+                            .apply();
+                }else{
+                    finish();
+                }
+                break;
+            case REQUEST_USERINFO:
+                if(resultCode == RESULT_OK){
+                String name = data.getStringExtra("LOGIN_USERID");
+                String phone = data.getStringExtra("LOGIN_USERID");
+                }
+                break;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        startActivity(new Intent(this, UserInfoActivity.class));
+
         if (!logon){
             Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_LOGIN);
         }
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
