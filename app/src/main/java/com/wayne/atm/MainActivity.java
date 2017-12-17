@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
             case REQUEST_LOGIN:
                 if(resultCode == RESULT_OK){
                     String userid = data.getStringExtra("EXTRA_USERID");
+                    String passwd = data.getStringExtra("EXTRA_PASSWD");
                     Toast.makeText(this, "Login userid:"+userid, Toast.LENGTH_LONG).show();
                     getSharedPreferences("atm", MODE_PRIVATE)
                             .edit()
@@ -35,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case REQUEST_USERINFO:
                 if(resultCode == RESULT_OK){
-                String name = data.getStringExtra("LOGIN_USERID");
-                String phone = data.getStringExtra("LOGIN_USERID");
+                String name = data.getStringExtra("EXTRA_NAME");
+                String phone = data.getStringExtra("EXTRA_PHONE");
+                Toast.makeText(this, "暱稱是:"+name+"電話是:"+phone,Toast.LENGTH_LONG).show();
                 }
                 break;
         }
@@ -46,12 +48,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startActivity(new Intent(this, UserInfoActivity.class));
 
-        if (!logon){
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivityForResult(intent, REQUEST_LOGIN);
-        }
+       if (!logon){
+         Intent intent = new Intent(this, LoginActivity.class);
+         startActivityForResult(intent, REQUEST_LOGIN);
+       }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -59,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this,UserInfoActivity.class);
+                startActivityForResult(intent,REQUEST_USERINFO);
             }
         });
     }

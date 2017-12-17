@@ -23,10 +23,11 @@ public class UserInfoActivity extends AppCompatActivity {
         Button Ok = (Button) findViewById(R.id.b_ok);
         String name = edName.getText().toString();
         String phone = edPhone.getText().toString();
-        getIntent().putExtra("EXTRA_NICKNAME", name);
+        getIntent().putExtra("EXTRA_NAME", name);
         getIntent().putExtra("EXTRA_PHONE", phone);
         setResult(RESULT_OK,getIntent());
         Intent intent = new Intent(this, MainActivity.class);
+        finish();
 
     }
 }
