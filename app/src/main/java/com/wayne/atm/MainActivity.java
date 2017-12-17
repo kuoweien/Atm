@@ -39,7 +39,12 @@ public class MainActivity extends AppCompatActivity {
                 String name = data.getStringExtra("EXTRA_NAME");
                 String phone = data.getStringExtra("EXTRA_PHONE");
                 Toast.makeText(this, "暱稱是:"+name+"電話是:"+phone,Toast.LENGTH_LONG).show();
+                getSharedPreferences("User",MODE_PRIVATE)
+                        .edit()
+                        .putString("NAME",name)
+                        .apply();
                 }
+
                 break;
         }
     }
