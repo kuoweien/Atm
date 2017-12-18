@@ -20,7 +20,10 @@ public class UserInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_info);
         String name = getSharedPreferences("User",MODE_PRIVATE)
                 .getString("NAME","");
+        String phone = getSharedPreferences("Phone",MODE_PRIVATE)
+                .getString("PHONE","");
         edName.setText(name);
+        edPhone.setText(phone);
     }
 
     public void Ok (View v){

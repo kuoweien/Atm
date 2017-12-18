@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
                         .edit()
                         .putString("NAME",name)
                         .apply();
+                getSharedPreferences("Phone",MODE_PRIVATE)
+                            .edit()
+                            .putString("PHONE",name)
+                            .apply();
                 }
 
                 break;
