@@ -94,7 +94,9 @@
         android:layout_height="wrap_content"
         android:onClick="Addr"
         android:text="住址"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="265dp" />
+        app:layout_constraintTop_toTopOf="@+id/b_ok"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/b_ok"
+        android:layout_marginLeft="8dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -59,8 +59,7 @@ public class UserInfoActivity extends AppCompatActivity {
 
     }
     public void Addr(View v){
-        Button Addr = (Button)findViewById(R.id.address);
-        Intent intent = new Intent(this, AddrActivity.class);
+        Intent intent = new Intent(this, CityActivity.class);
         startActivityForResult(intent,REQUEST_ADDR);
     }
 
