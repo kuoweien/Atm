@@ -18,6 +18,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private EditText edName;
     private EditText edPhone;
     private Spinner ages;
+    private final static int REQUEST_ADDR = 106;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +30,9 @@ public class UserInfoActivity extends AppCompatActivity {
         for (int i = 15; i <= 40; i++) {
             data.add(i + "");
         }*/
-        String[] data = getResources().getStringArray(R.array.ages);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, ages.setAdapter(adapter);
-        ages.setAdapter(adapter);
+      /*  String[] data = getResources().getStringArray(R.array.ages);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, ages.setAdapter ());
+        ages.setAdapter(adapter);*/
 
         edName = (EditText) findViewById(R.id.ed_name);
         edPhone = (EditText) findViewById(R.id.ed_phone);
@@ -56,6 +57,11 @@ public class UserInfoActivity extends AppCompatActivity {
   //      Intent intent = new Intent(this, MainActivity.class);
         finish();
 
+    }
+    public void Addr(View v){
+        Button Addr = (Button)findViewById(R.id.address);
+        Intent intent = new Intent(this, AddrActivity.class);
+        startActivityForResult(intent,REQUEST_ADDR);
     }
 
 }
