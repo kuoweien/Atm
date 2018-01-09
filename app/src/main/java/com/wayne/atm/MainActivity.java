@@ -9,7 +9,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import static com.wayne.atm.R.id.list;
 
 public class MainActivity extends AppCompatActivity {
     boolean logon = false;
@@ -58,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //startActivity(new Intent(this, Ch8Activity.class));
+       /* ListView list = (ListView) findViewById(R.id.list);
+        list = new String[]{"A","B","C"};
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, list);
+        list.setAdapter(adapter);*/
+
 
        if (!logon){
          Intent intent = new Intent(this, LoginActivity.class);
